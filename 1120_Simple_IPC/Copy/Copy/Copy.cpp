@@ -230,7 +230,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     break;
     case WM_USER + 13:
     {
-        g_linekind = 2;
+        g_linekind = 2;      
     }
     break;
     case WM_LBUTTONDOWN:
@@ -261,13 +261,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         hdc = GetDC(hWnd);
 
-        MoveToEx(hdc, g_x, g_y, NULL);
-        LineTo(hdc, x, y);
+       
   
         // 선 종류 고르기
         switch (g_linekind)
-        {
-        
+        {  
+        case 0:
+            break;
         case 1:
             source = PS_COSMETIC;
             break;
@@ -331,7 +331,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
        
         // 3. 사용
         switch (g_kind)
-        {        
+        { 
+        case 0:
+        {
+            MoveToEx(hdc, g_x, g_y, NULL);
+            LineTo(hdc, x, y);
+        }
         case 1:
         {
             MoveToEx(hdc, g_x, g_y, NULL);
@@ -376,7 +381,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
              // 선 종류 고르기 하지만 자유곡선이라 큰 차이가 없음
              switch (g_linekind)
-             {        
+             {       
+             case 0:
+                 break;
              case 1:
                  source = PS_COSMETIC;
                  break;
